@@ -91,7 +91,6 @@ public class App {
                 case 4:
                         if(transacao.depositaConta(accountsList) == 1){
                             System.out.println("Deposito realizado com sucesso");
-                            System.out.println(account.getSaldo()); 
                         }
                         else
                             System.out.println("Erro ao realizar deposito");
