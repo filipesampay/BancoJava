@@ -7,7 +7,7 @@ public class Account {
     private String Name;
     private String Acc;
     private int Ag;
-    private int Saldo;
+    private double Saldo;
 
     
 
@@ -41,16 +41,23 @@ public class Account {
     public int getAg() {
         return Ag;
     }
-    public int getSaldo() {
+    public double getSaldo() {
         return Saldo;
     }
 
     //Setters
     public int setName(String name) {
         //Caso o tamanho do nome exceda o tamanho maximo definido, retorna -1 como erro
+        //Caso nome ja existente retorna -2 (tratar exception)
         if(name.length()>MAX_LENGTH){
             return -1;
         }
+        for(Account account : accountsList){
+            if(account.getName().equalsIgnoreCase(name)){
+                return -2;
+            }
+        }
+        
         Name = name;
         return 0;
     }
@@ -62,7 +69,7 @@ public class Account {
         int conta = acc.nextInt(MaxRange - MinRange) + MinRange;
         
         //Concatenação da agencia + conta para ficar mais realista
-        Acc = Ag+"-0"+conta;
+        Acc = "0" + conta;
     }
     public void setAg() {
         //Cenario onde um banco possui 5 agencias
@@ -70,7 +77,7 @@ public class Account {
         Ag = 1 + agg.nextInt(5);
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         Saldo = saldo;
     }
 }
