@@ -27,9 +27,8 @@ public class App {
             Terminal terminal = new Terminal();
             terminal.getMenu();
         
-            escolha = 1;
-            escolha = 4;
-            //teclado.nextLine();
+            escolha = teclado.nextInt();
+            teclado.nextLine();
 
             Account account = new Account(accountsList);
             switch(escolha){
